@@ -1,4 +1,4 @@
-<template>
+gadr<template>
   <v-app color="grey lighten-4" flat>
     <v-toolbar color="grey darken-1" dark fixed app clipped-left>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
@@ -6,16 +6,18 @@
         <v-btn flat dark class="ml-2" @click="navigateTo({name: 'root'})">Music Player</v-btn>
       </v-toolbar-title>
       <v-toolbar-items>
-        <v-btn flat dark class="ml-2">Browse</v-btn>
+        <v-btn flat dark class="ml-2" @click="navigateTo({name: 'songs'})">Browse</v-btn>
       </v-toolbar-items>
       <v-spacer></v-spacer>
 
-      <v-toolbar-items>
+      <v-toolbar-items v-if="!$store.state.isUserLoggedIn">
         <v-btn flat dark class="ml-2" @click="navigateTo({name: 'login'})">Login</v-btn>
+
+        <v-btn flat dark class="ml-2" @click="navigateTo({name: 'register'})">Register</v-btn>
       </v-toolbar-items>
 
-      <v-toolbar-items>
-        <v-btn flat dark class="ml-2" @click="navigateTo({name: 'register'})">Register</v-btn>
+      <v-toolbar-items v-if="$store.state.isUserLoggedIn">
+        <v-btn flat dark class="ml-2" @click="logout">Logout</v-btn>
       </v-toolbar-items>
 
       <v-btn icon>
@@ -75,6 +77,10 @@ export default {
   methods: {
     navigateTo(route) {
       this.$router.push(route);
+    },
+    logout() {
+      this.$store.dispatch("handleSetToken", null);
+      this.$store.dispatch("handleSetUser", null);
     }
   }
 };

@@ -2,21 +2,21 @@
   <v-container>
     <v-layout class="registerBox">
       <v-flex xs12 sm6 offset-sm3>
-        <div class="white levation-2">
-          <v-toolbar flat dense class="cyan" dark>
-            <v-toolbar-title>Register</v-toolbar-title>
-          </v-toolbar>
-          <div class="pl-4 pr-4 pt-2 pb-2">
-            <v-form>
-              <v-text-field prepend-icon="person" label="Username" v-model="username"></v-text-field>
-              <v-text-field prepend-icon="email" label="Email" v-model="email"></v-text-field>
-              <v-text-field prepend-icon="lock" label="Password" v-model="password" type="password"></v-text-field>
-            </v-form>
-            <!-- <br>
-            <div class="error" v-html="error"></div>-->
-            <v-btn class="cyan" dark @click="register">Register</v-btn>
-          </div>
-        </div>
+        <my-awesome-panel title="Register">
+          <form name="register-form" autocomplete="off">
+            <v-text-field prepend-icon="person" label="Username" v-model="username"></v-text-field>
+            <v-text-field prepend-icon="email" label="Email" v-model="email"></v-text-field>
+            <v-text-field
+              prepend-icon="lock"
+              autocomplete="new-password"
+              label="Password"
+              v-model="password"
+              type="password"
+            ></v-text-field>
+          </form>
+
+          <v-btn class="cyan" dark @click="register">Register</v-btn>
+        </my-awesome-panel>
       </v-flex>
     </v-layout>
   </v-container>
@@ -24,11 +24,15 @@
 
 <script>
 import Swal from "sweetalert2";
+import MyAwesomePanel from "@/components/Panel";
 import { userServices } from "@/services";
 
 const { registerUser } = userServices;
 
 export default {
+  components: {
+    MyAwesomePanel
+  },
   data() {
     return {
       username: "",
