@@ -23,6 +23,7 @@
 <script>
 import Swal from "sweetalert2";
 import MyAwesomePanel from "@/components/Panel";
+import { setAuthorizationHeaderToken } from "@/utils";
 import { userServices } from "@/services";
 
 const { loginUser } = userServices;
@@ -47,6 +48,9 @@ export default {
 
         this.$store.dispatch("handleSetToken", response.data.token);
         this.$store.dispatch("handleSetUser", response.data);
+        setAuthorizationHeaderToken(response.data.token);
+        this.$router.push({ name: "songs" });
+
         Swal.fire({
           type: "success",
           position: "top-end",
