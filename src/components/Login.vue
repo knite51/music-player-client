@@ -22,7 +22,7 @@
 </template>
 <script>
 import Swal from "sweetalert2";
-import MyAwesomePanel from "@/components/Panel";
+import MyAwesomePanel from "@/components/Common/Panel";
 import { setAuthorizationHeaderToken } from "@/utils";
 import { userServices } from "@/services";
 

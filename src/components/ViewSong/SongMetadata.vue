@@ -7,6 +7,11 @@
           <div class="song-artist">{{song.artist}}</div>
           <div class="song-album">{{song.album}}</div>
           <div class="song-genre">{{song.genre}}</div>
+          <v-btn
+            dark
+            class="cyan"
+            @click="navigateTo({name: 'editSong', params: {songID: song.id}})"
+          >Edit</v-btn>
         </v-flex>
         <v-flex xs6>
           <img class="album-image" v-bind:src="song.songImageURL" alt>
@@ -19,14 +24,19 @@
 </template>
 
 <script>
-import MyAwesomePanel from "@/components/Panel";
+import MyAwesomePanel from "@/components/Common/Panel";
 
 export default {
   name: "SongMetadata",
   components: {
     MyAwesomePanel
   },
-  props: ["song"]
+  props: ["song"],
+  methods: {
+    navigateTo(route) {
+      this.$router.push(route);
+    }
+  }
 };
 </script>
 <style scoped>

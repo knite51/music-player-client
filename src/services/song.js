@@ -18,5 +18,17 @@ export default {
       .get('/api/songs/allSongs')
       .then(res => Promise.resolve(res.data))
       .catch(err => Promise.reject(err.response.data.error));
+  },
+  editSong: (songCredential) => {
+    return Api()
+      .patch(`/api/songs/${songCredential.id}`, songCredential)
+      .then(res => Promise.resolve(res.data))
+      .catch(err => Promise.reject(err.response.data.error));
+  },
+  deleteSong: songID => {
+    return Api()
+      .delete(`/api/songs/${songID}`)
+      .then(res => Promise.resolve(res.data))
+      .catch(err => Promise.reject(err.response.data.error));
   }
 };

@@ -3,7 +3,7 @@
     <v-layout class="songsBox">
       <v-flex xs12 sm8 offset-sm2>
         <my-awesome-panel title="Songs">
-          <router-link :to="{name: 'songsForm'}" slot="action">
+          <router-link :to="{name: 'createSong'}" slot="action">
             <v-btn fab absolute right>
               <v-icon>add</v-icon>
             </v-btn>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import MyAwesomePanel from "@/components/Panel";
+import MyAwesomePanel from "@/components/Common/Panel";
 import { songServices } from "@/services";
 
 const { getAllSongs } = songServices;
