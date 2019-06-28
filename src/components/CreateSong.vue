@@ -37,7 +37,7 @@
 
 <script>
 import Swal from "sweetalert2";
-import MyAwesomePanel from "@/components/Panel";
+import MyAwesomePanel from "@/components/Common/Panel";
 import { songServices } from "@/services";
 
 const { createSong } = songServices;
@@ -52,7 +52,7 @@ export default {
       artist: "",
       album: "",
       genre: "",
-      lyric: "",
+      lyrics: "",
       songImageURL: "",
       youtubeID: "",
       required: (value, ruleName) => !!value || `${ruleName} is required`

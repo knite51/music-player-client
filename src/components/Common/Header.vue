@@ -1,4 +1,4 @@
-gadr<template>
+<template>
   <v-app color="grey lighten-4" flat>
     <v-toolbar color="grey darken-1" dark fixed app clipped-left>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
@@ -7,6 +7,9 @@ gadr<template>
       </v-toolbar-title>
       <v-toolbar-items>
         <v-btn flat dark class="ml-2" @click="navigateTo({name: 'songs'})">Browse</v-btn>
+      </v-toolbar-items>
+      <v-toolbar-items>
+        <v-btn flat dark class="ml-2" @click="navigateTo({name: 'speechApi'})">Speech Api</v-btn>
       </v-toolbar-items>
       <v-spacer></v-spacer>
 
